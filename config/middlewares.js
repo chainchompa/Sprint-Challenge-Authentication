@@ -36,5 +36,5 @@ function generateToken(user) {
     jwtid: '6938591',
   };
 
-  return jwt.sign(payload, secret, options);
+  return jwt.sign(payload, jwtKey, options);
 }
