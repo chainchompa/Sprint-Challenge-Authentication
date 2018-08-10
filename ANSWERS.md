@@ -9,7 +9,8 @@ JWT(JSON Web Token) is used to add authentication to a Web API and transfer data
 
 2.  What does bcrypt do in order to prevent attacks?
 
-bcrypt hashes the password and implements salting to encrypt a password.
+bcrypt hashes the password and implements salting to encrypt a password. It allow us to add a cost, which is the number of
+iterations the hash has to make and increases the time it would take to find out someones password. 
 
 
 3.  What are the three parts of the JSON Web Token?
