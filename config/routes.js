@@ -28,8 +28,21 @@ function register(req, res) {
 }
 
 function login(req, res) {
-  // implement user login
-}
+  const credentials = req.body;
+
+  db('users')
+  .where({ username: credentials.username })
+  .first()
+  .then(user => {
+    if (user && bcrypt.compareSync(credentials.password, user.password)) {
+      const token = generateToken(user);
+      res.send(token);
+    }
+    return res.status(401).json({'errorMessage': 'The username and password you entered did not match our records. You shall not pass!'})
+  })
+  .catch(err => {
+    res.status(500).json({'error': 'Could not login user'})
+  })}
 
 function getJokes(req, res) {
   axios
